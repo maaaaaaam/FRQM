@@ -1,0 +1,42 @@
+services:
+
+  backend:
+    build: ./backend
+    depends_on:
+      mssql:
+        condition: service_healthy
+    environment:
+       - SPRING_DATASOURCE_URL=jdbc:sqlserver://mssql;databaseName=QuotesDb;trustServerCertificate=true
+       - SPRING_DATASOURCE_USERNAME=sa
+       - SPRING_DATASOURCE_PASSWORD=MyStrongPassword123!
+       - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  db-init:
+    build: ./DbInitialization
+    depends_on:
+      mssql:
+        condition: service_healthy
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=MyStrongPassword123!
+    volumes:
+      - mssql-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD", "bash", "-c", "</dev/tcp/localhost/1433"]
+      interval: 4s
+      timeout: 4s
+      retries: 10
+      start_period: 5s
+
+volumes:
+  mssql-data:
