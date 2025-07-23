@@ -1,5 +1,5 @@
 # Fullstack Random Quote Machine
->This is the **Java version** of the machine. There is a **C#** one that is no longer maintained - https://github.com/maaaaaaam/Random-Quote-Machine
+>This is the **Java version** of the machine. There is a **C#** one that is **no longer maintained** - https://github.com/maaaaaaam/Random-Quote-Machine
 
 A fullstack random quote machine that:
 
@@ -29,6 +29,3 @@ The reinitialization uses `backend\src\main\resources\10InitialQuotesForReinit.c
 - MS SQL Server
 - NginX
 - Docker
-
----
->TO DO: **refactor** the backend

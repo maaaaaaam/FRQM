@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# set -x
-
 echo "Waiting for the SQL Server ..."
 
 until /opt/mssql-tools/bin/sqlcmd -S mssql -U sa -P MyStrongPassword123! -Q "SELECT 1" &> /dev/null

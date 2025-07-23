@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 public class QuoteService {
 
     private final QuoteRepository repository;
-
     public QuoteService(QuoteRepository repo) {
         this.repository = repo;
     }
