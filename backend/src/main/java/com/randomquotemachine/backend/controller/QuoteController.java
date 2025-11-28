@@ -4,8 +4,8 @@ import com.randomquotemachine.backend.model.Quote;
 import com.randomquotemachine.backend.repository.QuoteRepository;
 import com.randomquotemachine.backend.service.QuoteService;
 
-import java.util.Map;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.List;
 import java.util.Random;
 
@@ -13,9 +13,9 @@ import java.util.concurrent.CompletableFuture;
 import org.springframework.scheduling.annotation.Async;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("api/quotes")
